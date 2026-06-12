@@ -5,7 +5,7 @@ function FeedbackSection() {
     <section className="feedback-section" id="feedback" aria-labelledby="feedback-title">
       <div>
         <p className="eyebrow">Feedback</p>
-        <h2 id="feedback-title">¿Que calculadora quieres que anadamos?</h2>
+        <h2 id="feedback-title">¿Qué calculadora quieres que añadamos?</h2>
         <p>
           Puedes enviar errores, sugerencias o ideas de nuevas calculadoras para
           futuras versiones de AgroCalc.
