@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="AgroCalc">
+  <rect width="64" height="64" rx="14" fill="#2f6f4e"/>
+  <path d="M16 43c12-3 18-11 21-25 8 8 9 18 2 26-6 7-15 8-23 5z" fill="#dcebdd"/>
+  <path d="M18 45c10-8 17-16 21-27" fill="none" stroke="#1f4c35" stroke-width="4" stroke-linecap="round"/>
+  <path d="M40 42h10M45 37v10" stroke="#ffffff" stroke-width="4" stroke-linecap="round"/>
+</svg>
