@@ -1,15 +1,5 @@
 import { formatCurrency, formatNumber } from '../utils/seedCalculations.js';
-
-function ResultItem({ label, value, detail, recommended = false }) {
-  return (
-    <div className={recommended ? 'result-item result-item-recommended' : 'result-item'}>
-      <span>{label}</span>
-      <strong>{value}</strong>
-      {recommended ? <mark>Recomendada para regular la sembradora</mark> : null}
-      {detail ? <small>{detail}</small> : null}
-    </div>
-  );
-}
+import ResultCard from './ResultCard.jsx';
 
 function ResultBox({ results }) {
   if (!results) {
@@ -25,49 +15,50 @@ function ResultBox({ results }) {
     <section className="results-section" aria-live="polite">
       <h3>Resultados</h3>
       <div className="result-grid">
-        <ResultItem
+        <ResultCard
           label="Semilla total necesaria"
           value={`${formatNumber(results.totalSeedKg)} kg`}
           detail="Calculada con la dosis corregida."
         />
-        <ResultItem
+        <ResultCard
           label="Dosis corregida"
           value={`${formatNumber(results.correctedDoseKgHa)} kg/ha`}
           detail={`Factor de correccion: ${formatNumber(results.correctionFactor)}`}
         />
         {results.totalCost !== null ? (
-          <ResultItem
+          <ResultCard
             label="Coste total estimado"
             value={formatCurrency(results.totalCost)}
             detail={`${formatCurrency(results.seedPricePerKg)} por kg`}
           />
         ) : null}
         {results.targetSeedsPerSquareMeter !== null ? (
-          <ResultItem
+          <ResultCard
             label="Semillas objetivo estimadas"
             value={`${formatNumber(results.targetSeedsPerSquareMeter)} semillas/m2`}
             detail="Antes de aplicar la correccion comercial."
           />
         ) : null}
         {results.correctedSeedsPerSquareMeter !== null ? (
-          <ResultItem
+          <ResultCard
             label="Semillas comerciales estimadas"
             value={`${formatNumber(results.correctedSeedsPerSquareMeter)} semillas/m2`}
             detail="Equivalente a la dosis corregida."
           />
         ) : null}
         {results.targetSeedsPerLinearMeter !== null ? (
-          <ResultItem
+          <ResultCard
             label="Semillas objetivo por metro"
             value={`${formatNumber(results.targetSeedsPerLinearMeter)} semillas/m`}
             detail="Semillas objetivo/m2 x separacion en metros."
           />
         ) : null}
         {results.correctedSeedsPerLinearMeter !== null ? (
-          <ResultItem
+          <ResultCard
             label="Semillas comerciales por metro"
             value={`${formatNumber(results.correctedSeedsPerLinearMeter)} semillas/m`}
-            detail="Semillas comerciales/m2 x separacion en metros."
+            detail="Cifra recomendada para regular la sembradora."
+            badge="Resultado recomendado"
             recommended
           />
         ) : null}

@@ -1,41 +1,52 @@
 import Header from './components/Header.jsx';
 import CalculatorCard from './components/CalculatorCard.jsx';
+import CalculatorSelector from './components/CalculatorSelector.jsx';
+import ComingSoonSection from './components/ComingSoonSection.jsx';
+import FeedbackSection from './components/FeedbackSection.jsx';
+import Hero from './components/Hero.jsx';
 import SeedRateCalculator from './components/SeedRateCalculator.jsx';
-import { plannedCalculators, seedRateCalculator } from './data/calculators.js';
+import SprayCalculator from './components/SprayCalculator.jsx';
+import {
+  availableCalculators,
+  plannedCalculators,
+  seedRateCalculator,
+  sprayingCalculator,
+} from './data/calculators.js';
 
 function App() {
+  const selectorCalculators = availableCalculators.filter(
+    (calculator) => calculator.id !== 'export',
+  );
+
   return (
     <div className="app-shell">
       <Header />
 
       <main className="main-layout">
-        <section className="intro-section" aria-labelledby="home-title">
-          <div>
-            <p className="eyebrow">Version inicial</p>
-            <h1 id="home-title">AgroCalc</h1>
-            <p className="intro-copy">
-              Calculadoras agroambientales claras, rapidas y listas para usar
-              en clase, campo o gabinete tecnico.
-            </p>
-          </div>
+        <Hero />
 
-          <div className="roadmap-panel" aria-label="Proximas calculadoras">
-            <span className="panel-label">Proximamente</span>
-            <ul>
-              {plannedCalculators.map((calculator) => (
-                <li key={calculator.id}>{calculator.title}</li>
-              ))}
-            </ul>
-          </div>
-        </section>
+        <CalculatorSelector calculators={selectorCalculators} />
 
         <CalculatorCard
+          id="siembra"
           category={seedRateCalculator.category}
           title={seedRateCalculator.title}
           description={seedRateCalculator.description}
         >
           <SeedRateCalculator />
         </CalculatorCard>
+
+        <CalculatorCard
+          id="pulverizacion"
+          category={sprayingCalculator.category}
+          title={sprayingCalculator.title}
+          description={sprayingCalculator.description}
+        >
+          <SprayCalculator />
+        </CalculatorCard>
+
+        <ComingSoonSection calculators={plannedCalculators} />
+        <FeedbackSection />
       </main>
     </div>
   );

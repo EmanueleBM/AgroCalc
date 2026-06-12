@@ -115,7 +115,7 @@ export function calculateSeedRate(rawValues) {
       : correctedSeedsPerSquareMeter * (rowSpacingCm / 100);
 
   const steps = [
-    `Se convierten pureza (${formatNumber(purityPercent)} %) y germinacion (${formatNumber(
+    `Primero se convierten pureza (${formatNumber(purityPercent)} %) y germinacion (${formatNumber(
       germinationPercent,
     )} %) a decimales.`,
     `El factor de correccion es 1 / (${formatNumber(purityDecimal)} x ${formatNumber(
@@ -124,7 +124,7 @@ export function calculateSeedRate(rawValues) {
     `La dosis corregida es ${formatNumber(targetDoseKgHa)} kg/ha x ${formatNumber(
       correctionFactor,
     )} = ${formatNumber(correctedDoseKgHa)} kg/ha.`,
-    `La semilla total es ${formatNumber(areaHa)} ha x ${formatNumber(
+    `La semilla total necesaria es ${formatNumber(areaHa)} ha x ${formatNumber(
       correctedDoseKgHa,
     )} kg/ha = ${formatNumber(totalSeedKg)} kg.`,
   ];

@@ -9,8 +9,11 @@ export const availableCalculators = [
   },
   {
     id: 'spraying',
-    status: 'planned',
-    title: 'Pulverizacion',
+    status: 'available',
+    category: 'Pulverizacion',
+    title: 'Calculadora de pulverizacion',
+    description:
+      'Calcula el volumen aplicado, el caudal por boquilla y la diferencia frente al objetivo.',
   },
   {
     id: 'investment',
@@ -27,10 +30,23 @@ export const availableCalculators = [
     status: 'planned',
     title: 'Consumo de pienso',
   },
+  {
+    id: 'export',
+    status: 'planned',
+    title: 'Exportar resultados',
+  },
 ];
+
+export const activeCalculators = availableCalculators.filter(
+  (calculator) => calculator.status === 'available',
+);
 
 export const seedRateCalculator = availableCalculators.find(
   (calculator) => calculator.id === 'seed-rate',
+);
+
+export const sprayingCalculator = availableCalculators.find(
+  (calculator) => calculator.id === 'spraying',
 );
 
 export const plannedCalculators = availableCalculators.filter(
